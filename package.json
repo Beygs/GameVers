@@ -1,8 +1,7 @@
 {
-  "name": "webpack",
+  "name": "gamevers",
   "version": "1.0.0",
-  "description": "Basic Webpack Project Setup w/ Sass, Typescript, Jest & Dotenv",
-  "main": "index.js",
+  "description": "GameVers, le futur de l'amusement vidéoludique",
   "scripts": {
     "test": "jest --watchAll --verbose",
     "build": "webpack --watch --config webpack.config.js --env NODE_ENV=development",
@@ -17,6 +16,7 @@
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
     "dotenv-webpack": "^7.0.3",
+    "html-webpack-plugin": "^5.5.0",
     "jest": "^27.4.7",
     "mini-css-extract-plugin": "^2.5.2",
     "postcss-loader": "^6.2.1",

@@ -16,7 +16,7 @@
   \****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://webpack/./src/scss/main.scss?");
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://gamevers/./src/scss/main.scss?");
 
 /***/ }),
 
@@ -26,7 +26,47 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
   \**********************/
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
-eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\n\n\n//# sourceURL=webpack://webpack/./src/index.ts?");
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\n__webpack_require__(/*! ./scss/main.scss */ \"./src/scss/main.scss\");\nvar routes_1 = __webpack_require__(/*! ./ts/routes */ \"./src/ts/routes.ts\");\nvar setRoute = function () {\n    var path = window.location.hash.substring(1).split('/');\n    var pageArgument = path[1] || \"\";\n    var pageContent = document.getElementById('pageContent');\n    if (pageContent) {\n        routes_1.default[path[0]]({ pageArgument: pageArgument, pageContent: pageContent });\n        return true;\n    }\n    console.error(\"Oups, there was an issue!\");\n    return false;\n};\nwindow.addEventListener('hashchange', function () { return setRoute(); });\nwindow.addEventListener('DOMContentLoaded', function () { return setRoute(); });\n\n\n//# sourceURL=webpack://gamevers/./src/index.ts?");
+
+/***/ }),
+
+/***/ "./src/ts/Home.ts":
+/*!************************!*\
+  !*** ./src/ts/Home.ts ***!
+  \************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar Home = function (_a) {\n    var pageArgument = _a.pageArgument, pageContent = _a.pageContent;\n    var render = function () {\n        pageContent.innerHTML = \"\\n      <section class=\\\"home\\\">\\n        <div class=\\\"articles\\\">Hey, this is the Home page!</div>\\n      </section>\\n    \";\n    };\n    render();\n};\nexports[\"default\"] = Home;\n\n\n//# sourceURL=webpack://gamevers/./src/ts/Home.ts?");
+
+/***/ }),
+
+/***/ "./src/ts/PageDetail.ts":
+/*!******************************!*\
+  !*** ./src/ts/PageDetail.ts ***!
+  \******************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar PageDetail = function (_a) {\n    var pageArgument = _a.pageArgument, pageContent = _a.pageContent;\n    var render = function () {\n        pageContent.innerHTML = \"\\n      <section class=\\\"home\\\">\\n        <div class=\\\"articles\\\">Hey, this is the Details Page of \".concat(pageArgument, \"!</div>\\n      </section>\\n    \");\n    };\n    render();\n};\nexports[\"default\"] = PageDetail;\n\n\n//# sourceURL=webpack://gamevers/./src/ts/PageDetail.ts?");
+
+/***/ }),
+
+/***/ "./src/ts/PageList.ts":
+/*!****************************!*\
+  !*** ./src/ts/PageList.ts ***!
+  \****************************/
+/***/ ((__unused_webpack_module, exports) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar PageList = function (_a) {\n    var pageArgument = _a.pageArgument, pageContent = _a.pageContent;\n    var render = function () {\n        pageContent.innerHTML = \"\\n      <section class=\\\"home\\\">\\n        <div class=\\\"articles\\\">Hey, this page is a PageList template, about: \".concat(pageArgument, \"!</div>\\n      </section>\\n    \");\n    };\n    console.log(\"caca\");\n    render();\n};\nexports[\"default\"] = PageList;\n\n\n//# sourceURL=webpack://gamevers/./src/ts/PageList.ts?");
+
+/***/ }),
+
+/***/ "./src/ts/routes.ts":
+/*!**************************!*\
+  !*** ./src/ts/routes.ts ***!
+  \**************************/
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+eval("\nObject.defineProperty(exports, \"__esModule\", ({ value: true }));\nvar Home_1 = __webpack_require__(/*! ./Home */ \"./src/ts/Home.ts\");\nvar PageDetail_1 = __webpack_require__(/*! ./PageDetail */ \"./src/ts/PageDetail.ts\");\nvar PageList_1 = __webpack_require__(/*! ./PageList */ \"./src/ts/PageList.ts\");\nvar routes = {\n    \"\": Home_1.default,\n    pageList: PageList_1.default,\n    pageDetail: PageDetail_1.default\n};\nexports[\"default\"] = routes;\n\n\n//# sourceURL=webpack://gamevers/./src/ts/routes.ts?");
 
 /***/ })
 
