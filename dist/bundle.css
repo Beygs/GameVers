@@ -1,10 +1,10 @@
-/*!***********************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/main.scss ***!
-  \***********************************************************************************************************************************************************************************/
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/main.scss ***!
+  \***************************************************************************************************************************************************************************************************************/
 @import url(https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap);
-/*!***************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/main.scss (1) ***!
-  \***************************************************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].use[3]!./src/scss/main.scss (1) ***!
+  \*******************************************************************************************************************************************************************************************************************/
 *,
 *::before,
 *::after {
@@ -15,7 +15,7 @@
 
 html,
 body {
-  height: 100%;
+  min-height: 100%;
 }
 
 html {
@@ -46,6 +46,10 @@ button:focus,
 textarea:focus,
 select:focus {
   outline: none;
+}
+
+select {
+  appearance: none;
 }
 
 p,
@@ -90,11 +94,16 @@ a {
 body {
   background-color: #191919;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 header,
 main,
 footer {
+  width: 100%;
   max-width: 1400px;
 }
 
@@ -116,6 +125,23 @@ h1 {
   font-weight: 700;
 }
 
+h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
+
+h4 {
+  color: white;
+  font-size: 1.125rem;
+}
+
+.tags {
+  color: white;
+  font-size: 0.75rem;
+}
+
 p {
   font-weight: 400;
 }
@@ -125,6 +151,13 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+}
+
+footer .spacer {
+  background-color: #d20a32;
+  height: 10px;
+  width: 10%;
+  margin-bottom: 1.25rem;
 }
 
 .searchbar {
@@ -141,7 +174,7 @@ header {
 .searchbar::before {
   content: "";
   position: absolute;
-  background: url(48aa76f4f39e7a082a9b.svg) no-repeat;
+  background: url("/img/search.svg") no-repeat;
   margin: 0.65em 1em;
   top: 0;
   left: 0;
@@ -149,6 +182,37 @@ header {
   height: 100%;
   color: white;
   z-index: -1;
+}
+
+.card-game__header {
+  aspect-ratio: 3/2;
+  overflow: hidden;
+  position: relative;
+}
+.card-game__header img,
+.card-game__header .details {
+  height: 100%;
+}
+.card-game__header .details {
+  position: absolute;
+  left: 0;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  background-color: #191919;
+  z-index: 1;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+.card-game__header:hover .details {
+  top: 0;
+}
+.card-game__platforms {
+  display: flex;
+}
+.card-game__platforms .icon {
+  margin: 0.4rem;
 }
 
 .page-list .description {
@@ -171,4 +235,10 @@ header {
 .page-list .description select option {
   background-color: #191919;
   padding: 0.4em 1.5em;
+}
+.page-list .articles {
+  display: grid;
+  grid-gap: 1.25rem;
+  grid-template-columns: repeat(3, 1fr);
+  margin-bottom: 2.75rem;
 }

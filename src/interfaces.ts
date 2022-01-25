@@ -10,6 +10,14 @@ interface PageArgs {
   pageContent: HTMLElement;
 }
 
+interface Platform {
+  platform: {
+    id: number;
+    name: string;
+    slug: string;
+  }
+}
+
 interface Game {
   id: number;
   name: string;
@@ -33,12 +41,7 @@ interface Game {
     name: string;
     slug: string;
   }[];
-  platforms: {
-    id: number;
-    name: string;
-    count: number;
-    percent: number;
-  }[];
+  platforms: Platform[];
   saturated_color: string;
   dominant_color: string;
   short_screenshots: {
@@ -52,12 +55,13 @@ interface Game {
     id: number;
     name: string;
     language: string;
-  }
+  }[];
   [keys: string]: any;
 }
 
 export {
   Routes,
   PageArgs,
+  Platform,
   Game
 }

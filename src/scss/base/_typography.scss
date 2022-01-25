@@ -15,6 +15,23 @@ h1 {
   @include big-heading;
 }
 
+h3 {
+  color: white;
+  font-weight: bold;
+  font-size: 1.5rem;
+  margin: spacing("very-small") 0;
+}
+
+h4 {
+  color: white;
+  font-size: 1.125rem;
+}
+
+.tags {
+  color: white;
+  font-size: 0.75rem;
+}
+
 p {
   font-weight: 400;
 }

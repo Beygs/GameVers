@@ -1,5 +1,8 @@
 import "./scss/main.scss";
 import routes from "./ts/routes";
+import Search from "./assets/images/search.svg";
+
+Search;
 
 const setRoute = (): boolean => {
   const path = window.location.hash.substring(1).split('/');

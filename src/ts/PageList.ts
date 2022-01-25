@@ -1,4 +1,5 @@
 import { Game, PageArgs } from "../interfaces";
+import CardGame from "./components/CardGame";
 import PlatformSelect from "./components/PlatformSelect";
 
 const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
@@ -8,21 +9,7 @@ const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
     const displayResults = (articles: Game[]): void => {
       console.log(articles);
 
-      const resultsContent = articles.map(({
-        background_image,
-        id,
-        name,
-        platforms
-      }: Game) => (
-        `
-        <article class="cardGame">
-          <a href="#pagedetail/${id}">
-            <img src="${background_image}">
-            <h3>${name}</h3>
-          </a>
-        </article>
-        `
-      ));
+      const resultsContent = articles.map((game: Game) => CardGame(game));
 
       console.log(resultsContent);
 

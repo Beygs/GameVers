@@ -30,7 +30,10 @@ module.exports = env => {
               loader: MiniCssExtractPlugin.loader
             },
             {
-              loader: "css-loader"
+              loader: "css-loader",
+              options: {
+                url: false
+              }
             },
             {
               loader: "postcss-loader"
@@ -45,7 +48,11 @@ module.exports = env => {
         },
         {
           test: /\.(png|jpe?g|gif|svg)$/i,
-          type: "asset/resource"
+          loader: "file-loader",
+          options: {
+            outputPath: "img/",
+            name: "[name].[ext]"
+          }
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/i,
