@@ -1,0 +1,20 @@
+*,
+*::before,
+*::after {
+  line-height: $global-line-height;
+}
+
+html {
+  font-size: $global-font-size;
+  font-family: $global-font-family;
+  color: white;
+}
+
+h1 {
+  color: red;
+  @include big-heading;
+}
+
+p {
+  font-weight: 400;
+}

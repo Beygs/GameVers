@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 //imports abstracts
 
 @import "abstracts/variables";
@@ -15,8 +17,14 @@
 
 //imports layout
 
+@import "layout/header";
+
 //imports components
 
+@import "components/searchbar";
+
 //import pages
+
+@import "pages/page_list";
 
 //import themes

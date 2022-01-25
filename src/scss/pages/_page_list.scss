@@ -1,0 +1,26 @@
+.page-list {
+  .description {
+    margin-bottom: spacing("medium");
+
+    h2 {
+      @include big-heading;
+      margin-bottom: spacing("small");
+    }
+
+    p {
+      margin-bottom: spacing("medium-lg")
+    }
+
+    select {
+      padding: 0.4em 1.5em;
+      background-color: $red;
+      color: white;
+      border: none;
+
+      option {
+        background-color: $dark;
+        padding: 0.4em 1.5em;
+      }
+    }
+  }
+}

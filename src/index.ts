@@ -5,7 +5,7 @@ const setRoute = (): boolean => {
   const path = window.location.hash.substring(1).split('/');
   const pageArgument = path[1] || "";
 
-  const pageContent = document.getElementById('pageContent');
+  const pageContent = document.getElementById('app');
 
   if (pageContent) {
     routes[path[0]]({ pageArgument, pageContent });
