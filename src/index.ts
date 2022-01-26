@@ -5,16 +5,12 @@ import Search from "./assets/images/search.svg";
 Search;
 
 export let games: GameDetails[] = [];
+export let previous_path: string;
 
-const setRoute = (/*{ gameSearch, pageNumber }: { gameSearch?: string; pageNumber?: number }*/): boolean => {
-  console.log(games);
+const setRoute = (): boolean => {
   const pageContent = document.getElementById('app');
 
   if (pageContent) {
-    // if (gameSearch) {
-    //   routes["pageList"]({ pageArgument: gameSearch, pageContent });
-    //   return true;
-    // }
 
     const path = window.location.hash.substring(1).split('/');
     const pageArgument = path[1] || "";
@@ -27,9 +23,18 @@ const setRoute = (/*{ gameSearch, pageNumber }: { gameSearch?: string; pageNumbe
   return false;
 };
 
+const setPreviousPath = (): string => {
+  const path = window.location.hash.substring(1).split('/');
+  console.log(path)
+  if (path[0] === "" || path[0] === "pageList") return window.location.hash;
+  return previous_path;
+}
+
 window.addEventListener('hashchange', () => {
   setRoute();
+  previous_path = setPreviousPath();
 });
 window.addEventListener('DOMContentLoaded', () => {
   setRoute();
+  previous_path = setPreviousPath();
 });

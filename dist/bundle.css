@@ -125,7 +125,8 @@ h1 {
   font-weight: 700;
 }
 
-h3 {
+h3,
+.show-more {
   color: white;
   font-weight: bold;
   font-size: 1.5rem;
@@ -230,6 +231,9 @@ footer .spacer {
   opacity: 1;
 }
 
+.page-list {
+  margin-bottom: 2.75rem;
+}
 .page-list .description {
   margin-bottom: 1.75rem;
 }
@@ -255,5 +259,15 @@ footer .spacer {
   display: grid;
   grid-gap: 1.25rem;
   grid-template-columns: repeat(3, 1fr);
-  margin-bottom: 2.75rem;
+}
+.page-list .show-more {
+  padding: 0.4em 1.5em;
+  background-color: #d20a32;
+  color: white;
+  border: none;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 2.75rem;
+  padding: 1em 3em;
 }

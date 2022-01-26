@@ -13,7 +13,7 @@ const CardGame = ({
 }: GameDetails) => {
   return (`
   <article class="card-game">
-  <a href="#pagedetail/${id}">
+  <a href="#pageDetail/${id}">
     <div class="card-game__header">
       <img src="${background_image}">
       <div class="details">

@@ -33,6 +33,11 @@ interface Tag extends BasicObject {
   language: string;
 }
 
+interface ShortScreenshot {
+  id: number;
+  image: string;
+}
+
 interface GameDetails {
   id: number;
   slug: string;
@@ -49,11 +54,7 @@ interface GameDetails {
   genres: BasicObject[];
   tags: Tag[];
   publishers: BasicObject[];
+  movies_count: number;
   trailer: string;
+  screenshots?: string[];
 }
-
-// export {
-//   Routes,
-//   PageArgs,
-//   GameDetails
-// }

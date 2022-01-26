@@ -1,12 +1,13 @@
 import CardGame from "./components/CardGame";
 import PlatformSelect from "./components/PlatformSelect";
 import * as dayjs from "dayjs";
-import { games } from "..";
+import { games, previous_path } from "..";
 import Game from "./Game";
 
-let pageNumber = 1;
 
 const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
+  let pageNumber = 1;
+
   const fetchList = (url: string, argument: string | undefined = undefined) => {
     // Use With API request
 
@@ -27,7 +28,7 @@ const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
     data.forEach(d => {
       fetch(`https://api.rawg.io/api/games/${d.id}?&key=${process.env.RAWG_KEY}`)
         .then(response => response.json())
-        .then(result => games.push(new Game(result)))
+        .then(result => games.push(new Game(result, d.short_screenshots.map((s: ShortScreenshot) => s.image))))
         .then(() => displayResults())
         .catch((error) => {
           console.error("Erreur ! 💥💥💥💥💥 =>", error);
@@ -59,7 +60,9 @@ const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
       return;
     }
 
-    const cleanedArg = pageArgument.replace(/\s+/g, "-");
+    const cleanedArg = pageArgument.replace(/(\s|%20)+/g, "-");
+
+    console.log(cleanedArg);
     
     fetchList(`https://api.rawg.io/api/games?key=${process.env.RAWG_KEY}&page_size=27`, cleanedArg);
 
@@ -92,15 +95,19 @@ const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
       </section>
     `;
 
-    preparePage();
-
     const showMoreBtn = document.querySelector(".show-more");
-
+    
     showMoreBtn?.addEventListener("click", () => {
       if (pageNumber >= 2) showMoreBtn.remove();
       pageNumber++;
       return displayResults();
-    })
+    });
+
+    if (previous_path === window.location.hash) {
+      displayResults();
+    } else {
+      preparePage();
+    }
   }
 
   render();
