@@ -1,4 +1,3 @@
-import { Routes } from "../interfaces";
 import PageDetail from "./PageDetail";
 import PageList from "./PageList";
 

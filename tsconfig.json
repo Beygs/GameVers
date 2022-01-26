@@ -10,6 +10,7 @@
   ],
   "include": [
     "index.d.ts",
-    "src"
+    "src",
+    "interfaces.d.ts"
   ]
 }

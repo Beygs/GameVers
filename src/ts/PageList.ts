@@ -1,52 +1,74 @@
-import { Game, PageArgs } from "../interfaces";
 import CardGame from "./components/CardGame";
 import PlatformSelect from "./components/PlatformSelect";
+import * as dayjs from "dayjs";
+import { games } from "..";
+import Game from "./Game";
+
+let pageNumber = 1;
 
 const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
-  const preparePage = (): void => {
-    const cleanedArg = pageArgument.replace(/\s+/g, "-");
+  const fetchList = (url: string, argument: string | undefined = undefined) => {
+    // Use With API request
 
-    const displayResults = (articles: Game[]): void => {
-      console.log(articles);
+    const finalURL = argument ? `${url}&search=${argument}` : url;
 
-      const resultsContent = articles.map((game: Game) => CardGame(game));
+    fetch(finalURL)
+      .then((response) => response.json())
+      .then((data) => getGameDetails(data.results))
+      .catch((error) => {
+        console.error("Erreur ! 💥💥💥💥💥 =>", error);
+        handleError();
+      });
+  }
 
-      console.log(resultsContent);
+  const getGameDetails = (data: any[]): void => {
+    if (pageNumber === 1) games.splice(0, games.length);
 
-      const resultsContainer = document.querySelector(".page-list .articles");
-      
-      if (resultsContainer) {
-        resultsContainer.innerHTML = resultsContent.join("\n");
-        return;
-      }
+    data.forEach(d => {
+      fetch(`https://api.rawg.io/api/games/${d.id}?&key=${process.env.RAWG_KEY}`)
+        .then(response => response.json())
+        .then(result => games.push(new Game(result)))
+        .then(() => displayResults())
+        .catch((error) => {
+          console.error("Erreur ! 💥💥💥💥💥 =>", error);
+          handleError();
+        });
+    })
+  }
 
-      handleError();
+  const displayResults = (): void => {
+    const gamesArr = [...games];
+    const resultsContent = gamesArr.map((game) => CardGame(game));
+
+    const resultsContainer = document.querySelector(".page-list .articles");
+    
+    if (resultsContainer) {
+      resultsContainer.innerHTML = resultsContent.slice(0, 9 * pageNumber).join("\n");
       return;
     }
-    
-    const fetchList = (url: string, argument: string) => {
-      // Use With API request
 
-      // const finalURL = argument ? `${url}&search=${argument}` : url;
+    handleError();
+    return;
+  }
 
-      // fetch(finalURL)
-      // .then((response) => response.json())
-      // .then((data) => displayResults(data.results))
-      // .catch((error) => {
-      //   console.error("Erreur ! 💥💥💥💥💥 =>", error);
-      //   handleError();
-      // })
-
+  const preparePage = (): void => {
+    if (pageArgument === "") {
+      fetchList(
+        `https://api.rawg.io/api/games?dates=${dayjs().format("YYYY-MM-DD")},${dayjs().add(1, "year").format("YYYY-MM-DD")}&ordering=-added&page_size=27&key=${process.env.RAWG_KEY}`
+      )
+      return;
     }
+
+    const cleanedArg = pageArgument.replace(/\s+/g, "-");
     
-    // fetchList(`https://api.rawg.io/api/games?key=${process.env.RAWG_KEY}`, cleanedArg);
+    fetchList(`https://api.rawg.io/api/games?key=${process.env.RAWG_KEY}&page_size=27`, cleanedArg);
 
     // Use Without API request
 
-    const data = require("../borderlands_api_results.json");
-    console.log(data);
+    // const data = require("../borderlands_api_results.json");
+    // console.log(data);
 
-    displayResults(data.results);
+    // displayResults(data.results);
   }
     
   const handleError = (): void => {
@@ -66,10 +88,19 @@ const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
           ${PlatformSelect()}
         </div>
         <div class="articles">...loading</div>
+        <button class="show-more">Show More</button>
       </section>
     `;
 
     preparePage();
+
+    const showMoreBtn = document.querySelector(".show-more");
+
+    showMoreBtn?.addEventListener("click", () => {
+      if (pageNumber >= 2) showMoreBtn.remove();
+      pageNumber++;
+      return displayResults();
+    })
   }
 
   render();

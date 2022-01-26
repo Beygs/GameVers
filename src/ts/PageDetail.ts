@@ -1,5 +1,3 @@
-import { PageArgs } from "../interfaces";
-
 const PageDetail = ({ pageArgument, pageContent }: PageArgs): void => {
   const render = ():void => {
     pageContent.innerHTML = `

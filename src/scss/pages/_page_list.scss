@@ -1,4 +1,6 @@
 .page-list {
+  margin-bottom: spacing("large");
+
   .description {
     margin-bottom: spacing("medium");
 
@@ -12,10 +14,7 @@
     }
 
     select {
-      padding: 0.4em 1.5em;
-      background-color: $red;
-      color: white;
-      border: none;
+      @include button;
 
       option {
         background-color: $dark;
@@ -28,6 +27,14 @@
     display: grid;
     grid-gap: spacing("small");
     grid-template-columns: repeat(3, 1fr);
-    margin-bottom: spacing("large");;
+  }
+
+  .show-more {
+    @include button;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: spacing("large");
+    padding: 1em 3em;
   }
 }

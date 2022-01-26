@@ -15,7 +15,8 @@ h1 {
   @include big-heading;
 }
 
-h3 {
+h3,
+.show-more {
   color: white;
   font-weight: bold;
   font-size: 1.5rem;

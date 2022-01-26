@@ -212,7 +212,22 @@ footer .spacer {
   display: flex;
 }
 .card-game__platforms .icon {
+  position: relative;
   margin: 0.4rem;
+}
+.card-game__platforms .icon .hover {
+  position: absolute;
+  bottom: -80%;
+  left: 50%;
+  transform-origin: left;
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  color: white;
+}
+.card-game__platforms .icon:hover .hover {
+  visibility: visible;
+  opacity: 1;
 }
 
 .page-list .description {

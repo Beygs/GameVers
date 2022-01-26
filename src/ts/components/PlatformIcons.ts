@@ -1,5 +1,3 @@
-import { stringLiteral } from "@babel/types";
-import { Platform } from "../../interfaces";
 import Linux from "../../assets/images/linux.svg";
 import Mobile from "../../assets/images/mobile.svg";
 import Other from "../../assets/images/other.svg";
@@ -13,22 +11,21 @@ const PlatformIcons = (platforms: Platform[]): any => {
 
   const platformIconsMap: IconsMap = {
     "pc": Windows,
-    "playstation5": Playstation,
-    "xbox-one": Xbox,
-    "playstation4": Playstation,
-    "xbox-series-x": Xbox,
-    "nintendo-switch": Switch,
+    "xbox": Xbox,
+    "playstation": Playstation,
+    "nintendo": Switch,
     "ios": Mobile,
     "android": Mobile,
     "linux": Linux,
   };
 
-  console.log(Windows)
-
-  return platforms?.map(({ platform }: Platform): string => {
-    const { slug, name } = platform;
+  return platforms?.map((platform): string => {
+    const { slug, name } = platform.platform; //TODO: Changer de nom parce que là c'est vraiment pas ouf
     return `
-      <img class="icon" src="${platformIconsMap[slug] ||= Other}" alt="${name}">
+      <div class="icon">
+        <div class="hover">${name}</div>
+        <img class="icon" src="${platformIconsMap[slug] ||= Other}" alt="${name}">
+      </div>
     `;
   }).join("\n");
 };

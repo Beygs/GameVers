@@ -8,9 +8,13 @@
 <script defer src="bundle.js"></script><link href="bundle.css" rel="stylesheet"></head>
 <body>
   <header>
-    <h1>GameVers</h1>
+    <a href="#">
+      <h1>GameVers</h1>
+    </a>
     <div class="searchbar">
-      <input type="text" placeholder="Find a game..." class="searchbar__bar">
+      <form action="#pageList" onsubmit="location.hash = 'pageList/' + this.s.value; return false;">
+        <input type="text" placeholder="Find a game..." class="searchbar__bar" name="s">
+      </form>
     </div>
   </header>
   <main id="app"></main>

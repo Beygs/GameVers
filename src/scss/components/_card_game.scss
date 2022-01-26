@@ -31,7 +31,24 @@
     display: flex;
 
     .icon {
+      position: relative;
       margin: 0.4rem;
+
+      .hover {
+        position: absolute;
+        bottom: -80%;
+        left: 50%;
+        transform-origin: left;
+        transform: translateX(-50%);
+        visibility: hidden;
+        opacity: 0;
+        color: white;
+      }
+
+      &:hover .hover {
+        visibility: visible;
+        opacity: 1;
+      }
     }
   }
 }
