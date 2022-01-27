@@ -18,14 +18,12 @@ export default class Game {
   tags!: Tag[];
   publishers!: BasicObject[];
   movies_count!: number;
-  trailer: string;
+  trailer!: string;
   screenshots?: string[];
 
   constructor(gameDetails: GameDetails, screenshots?: string[] ) {
     Object.assign(this, gameDetails);
     this.screenshots = screenshots;
-    if (!this.screenshots) this.getScreenshots();
-    this.trailer = "test";
     this.formatReleased();
   }
 
@@ -43,12 +41,14 @@ export default class Game {
   }
 
   getScreenshots() {
-    const url = `https://api.rawg.io/api/games/${this.slug}/screenshots?key=${process.env.RAWG_KEY}`;
+    const url = `https://api.rawg.io/api/games/${this.id}/screenshots?key=${process.env.RAWG_KEY}`;
 
     fetch(url)
       .then(response => response.json())
-      .then(result => this.screenshots = result?.results.map((r: ShortScreenshot) => r.image))
+      .then(result => this.screenshots = result.results.map((r: ShortScreenshot) => r.image))
       .catch((error) => console.error("Erreur ! 💥💥💥💥💥 =>", error));
+
+    return this;
   }
 
   formatReleased(): this {

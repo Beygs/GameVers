@@ -9,7 +9,8 @@ const PageDetail = ({ pageArgument, pageContent }: PageArgs): void => {
     if (!game) {
       fetch(`https://api.rawg.io/api/games/${pageArgument}?key=${process.env.RAWG_KEY}`)
         .then(response => response.json())
-        .then(result => displayResult(new Game(result).getTrailer()))
+        .then(result => new Game(result).getScreenshots().getTrailer())
+        .then(game => displayResult(game))
       return;
     }
 
