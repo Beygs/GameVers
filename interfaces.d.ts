@@ -2,12 +2,14 @@ interface Routes {
   [key: string]: (arg: {
     pageArgument: string;
     pageContent: HTMLElement;
+    typeArgument?: string;
   }) => void;
 }
 
 interface PageArgs {
   pageArgument: string;
   pageContent: HTMLElement;
+  typeArgument?: string;
 }
 
 interface BasicObject {

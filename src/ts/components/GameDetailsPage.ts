@@ -55,13 +55,13 @@ const GameDetailsDisplay = ({
         <p class="detail__name">Release Date</p>
         <p class="detail__values">${released}</p>
       </div>
-      ${ActionableDetail("Developer(s)", developers)}
-      ${ActionableDetail("Platforms", parent_platforms.map(item => item.platform))}
-      ${ActionableDetail("Publisher(s)", publishers)}
+      ${ActionableDetail("Developer(s)", developers, "developers")}
+      ${ActionableDetail("Platforms", parent_platforms.map(item => item.platform), "platforms")}
+      ${ActionableDetail("Publisher(s)", publishers, "publishers")}
     </div>
     <div class="details details-last">
-      ${ActionableDetail("Genre(s)", genres)}
-      ${ActionableDetail("Tags", tags.filter(tag => tag.language === "eng"))}
+      ${ActionableDetail("Genre(s)", genres, "genres")}
+      ${ActionableDetail("Tags", tags.filter(tag => tag.language === "eng"), "tags")}
     </div>
     <h1>Buy</h1>
     ${formattedStores}

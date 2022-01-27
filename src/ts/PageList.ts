@@ -5,7 +5,7 @@ import { games, previous_path } from "..";
 import Game from "./Game";
 
 
-const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
+const PageList = ({ pageArgument, pageContent, typeArgument }: PageArgs): void => {
   let pageNumber = 1;
 
   const fetchList = (url: string, argument: string | undefined = undefined) => {
@@ -53,10 +53,17 @@ const PageList = ({ pageArgument, pageContent }: PageArgs): void => {
   }
 
   const preparePage = (): void => {
+    if (typeArgument) {
+      fetchList(
+        `https://api.rawg.io/api/games?ordering=-added&page_size=27&${typeArgument}=${pageArgument}&key=${process.env.RAWG_KEY}`
+      );
+      return;
+    }
+
     if (pageArgument === "") {
       fetchList(
         `https://api.rawg.io/api/games?dates=${dayjs().format("YYYY-MM-DD")},${dayjs().add(1, "year").format("YYYY-MM-DD")}&ordering=-added&page_size=27&key=${process.env.RAWG_KEY}`
-      )
+      );
       return;
     }
 

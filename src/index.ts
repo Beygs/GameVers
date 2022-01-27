@@ -14,11 +14,16 @@ const setRoute = (): boolean => {
   window.scrollTo(0, 0);
 
   if (pageContent) {
-
     const path = window.location.hash.substring(1).split('/');
-    const pageArgument = path[1] || "";
+    let pageArgument = path[1] || "";
+    let typeArgument: string | undefined = undefined;
+    
+    if (path[1] && path[1].match(/^(platforms|developers|publishers|genres|tags)=\d+/)) {
+      typeArgument = path[1].split("=")[0];
+      pageArgument = path[1].split("=")[1];
+    }
 
-    routes[path[0]]({ pageArgument, pageContent });
+    routes[path[0]]({ pageArgument, pageContent, typeArgument });
     return true;
   }
 
