@@ -45,7 +45,7 @@ const GameDetailsDisplay = ({
   <div class="content">
     <div class="content__header">
       <h3 class="title">${name}</h3>
-      <h4 class="rating">${rating}/5 - ${ratings_count} votes</h4>
+      <h4 class="rating">${rating}/5 - ${ratings_count}&nbsp;votes</h4>
     </div>
     <div class="description">
       ${description}

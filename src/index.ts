@@ -11,6 +11,8 @@ export let previous_path: string;
 const setRoute = (): boolean => {
   const pageContent = document.getElementById('app');
 
+  window.scrollTo(0, 0);
+
   if (pageContent) {
 
     const path = window.location.hash.substring(1).split('/');

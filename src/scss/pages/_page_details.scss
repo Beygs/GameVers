@@ -33,17 +33,26 @@
   .content {
     &__header {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
       justify-content: space-between;
       margin-bottom: spacing("medium");
 
       .title {
         @include big-heading;
+        width: 70%;
       }
-
+      
       .rating {
         font-size: 1.5rem;
         color: $red;
+
+      }
+      @media screen and (max-width: 1200px) {
+        .title,
+        .rating {
+          width: 100%;
+        }
       }
     }
 
@@ -67,12 +76,24 @@
       &-first {
         .detail {
           width: 25%;
+
+          @include tablet {
+            width: 50%;
+          }
+
+          @include mobile {
+            width: 100%;
+          }
         }
       }
 
       &-last {
         .detail {
           width: 50%;
+
+          @include mobile {
+            width: 100%;
+          }
         }
       }
     }

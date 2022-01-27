@@ -1,6 +1,4 @@
 .page-list {
-  margin-bottom: spacing("large");
-
   .description {
     margin-bottom: spacing("medium");
 
@@ -31,5 +29,9 @@
     transform: translateX(-50%);
     margin-top: spacing("large");
     padding: 1em 3em;
+
+    @include mobile {
+      font-size: 1rem;
+    }
   }
 }
