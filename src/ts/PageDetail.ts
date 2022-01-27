@@ -14,17 +14,6 @@ const PageDetail = ({ pageArgument, pageContent }: PageArgs): void => {
     }
 
     displayResult(game);
-
-    // const cleanedArg = pageArgument.replace(/\s+/g, "-");
-    
-    // fetchList(`https://api.rawg.io/api/games?key=${process.env.RAWG_KEY}&page_size=27`, cleanedArg);
-
-    // Use Without API request
-
-    // const data = require("../borderlands_api_results.json");
-    // console.log(data);
-
-    // displayResults(data.results);
   }
 
   const displayResult = (game: Game): void => {

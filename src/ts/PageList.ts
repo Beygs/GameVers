@@ -13,6 +13,8 @@ const PageList = ({ pageArgument, pageContent, typeArgument }: PageArgs): void =
 
     const finalURL = argument ? `${url}&search=${argument}` : url;
 
+    console.log(finalURL);
+
     fetch(finalURL)
       .then((response) => response.json())
       .then((data) => getGameDetails(data.results))
@@ -109,6 +111,14 @@ const PageList = ({ pageArgument, pageContent, typeArgument }: PageArgs): void =
       pageNumber++;
       return displayResults();
     });
+
+    const platformSelect = document.querySelector("select");
+
+    if (platformSelect) {
+      platformSelect.addEventListener("click", () => {
+        window.location.hash = platformSelect.value === "" ? "" : `pageList/parent_platforms=${platformSelect.value}`;
+      });
+    }
 
     if (previous_path === window.location.hash) {
       displayResults();

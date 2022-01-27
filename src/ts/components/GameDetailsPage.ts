@@ -33,7 +33,7 @@ const GameDetailsDisplay = ({
   let formattedTrailer = "";
 
   if (trailer) formattedTrailer = `<h1>Trailer</h1><video src="${trailer}" type="video/mp4">`;
-
+  
   const gamesArr = [...games];
   const resultsContent = gamesArr.filter(game => game.id !== id).map((game) => CardGame(game)).slice(0, 9).join("\n");
 
@@ -56,7 +56,7 @@ const GameDetailsDisplay = ({
         <p class="detail__values">${released}</p>
       </div>
       ${ActionableDetail("Developer(s)", developers, "developers")}
-      ${ActionableDetail("Platforms", parent_platforms.map(item => item.platform), "platforms")}
+      ${ActionableDetail("Platforms", parent_platforms.map(item => item.platform), "parent_platforms")}
       ${ActionableDetail("Publisher(s)", publishers, "publishers")}
     </div>
     <div class="details details-last">

@@ -20,11 +20,13 @@ const PlatformIcons = (platforms: Platform[]): any => {
   };
 
   return platforms?.map((platform): string => {
-    const { slug, name } = platform.platform; //TODO: Changer de nom parce que là c'est vraiment pas ouf
+    const { slug, name, id } = platform.platform; //TODO: Changer de nom parce que là c'est vraiment pas ouf
     return `
       <div class="icon">
         <div class="hover">${name}</div>
-        <img class="icon" src="${platformIconsMap[slug] ||= Other}" alt="${name}">
+        <a href="#pageList/parent_platforms=${id}">
+          <img class="icon" src="${platformIconsMap[slug] ||= Other}" alt="${name}">
+        </a>
       </div>
     `;
   }).join("\n");

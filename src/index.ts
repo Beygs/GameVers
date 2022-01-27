@@ -18,7 +18,7 @@ const setRoute = (): boolean => {
     let pageArgument = path[1] || "";
     let typeArgument: string | undefined = undefined;
     
-    if (path[1] && path[1].match(/^(platforms|developers|publishers|genres|tags)=\d+/)) {
+    if (path[1] && path[1].match(/^(parent_platforms|developers|publishers|genres|tags)=\d+/)) {
       typeArgument = path[1].split("=")[0];
       pageArgument = path[1].split("=")[1];
     }

@@ -28,11 +28,25 @@ h4 {
   font-size: 1.125rem;
 }
 
-.tags {
+.genres {
   color: white;
   font-size: 0.75rem;
 }
 
 p {
   font-weight: 400;
+}
+
+.store {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    background-color: $red;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
 }
