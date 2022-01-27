@@ -1,10 +1,11 @@
 import "./scss/main.scss";
 import routes from "./ts/routes";
 import Search from "./assets/images/search.svg";
+import Game from "./ts/Game";
 
 Search;
 
-export let games: GameDetails[] = [];
+export let games: Game[] = [];
 export let previous_path: string;
 
 const setRoute = (): boolean => {

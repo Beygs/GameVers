@@ -57,4 +57,6 @@ interface GameDetails {
   movies_count: number;
   trailer: string;
   screenshots?: string[];
+  getScreenshots?: () => string[] | undefined;
+  getTrailer?: () => string | undefined;
 }

@@ -40,12 +40,17 @@ export default class Game {
     return this;
   }
 
-  getScreenshots() {
+  getScreenshots(): this {
     const url = `https://api.rawg.io/api/games/${this.id}/screenshots?key=${process.env.RAWG_KEY}`;
 
     fetch(url)
       .then(response => response.json())
       .then(result => this.screenshots = result.results.map((r: ShortScreenshot) => r.image))
+      .then(screenshots => {
+        const container = document.querySelector(".screenshots");
+
+        if (container) container.innerHTML = screenshots.map((screenshot: string) => `<img src="${screenshot}" alt="Screenshot">`).join("\n");
+      })
       .catch((error) => console.error("Erreur ! 💥💥💥💥💥 =>", error));
 
     return this;

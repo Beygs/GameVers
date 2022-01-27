@@ -19,6 +19,7 @@
 
 @import "layout/header";
 @import "layout/footer";
+@import "layout/cards_grid";
 
 //imports components
 
@@ -28,5 +29,6 @@
 //import pages
 
 @import "pages/page_list";
+@import "pages/page_details";
 
 //import themes

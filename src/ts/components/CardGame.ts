@@ -1,3 +1,4 @@
+import Game from "../Game";
 import PlatformIcons from "./PlatformIcons";
 
 const CardGame = ({
@@ -10,7 +11,7 @@ const CardGame = ({
   ratings_count,
   genres,
   developers
-}: GameDetails) => {
+}: Game) => {
   return (`
   <article class="card-game">
   <a href="#pageDetail/${id}">

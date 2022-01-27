@@ -9,8 +9,7 @@ const PageDetail = ({ pageArgument, pageContent }: PageArgs): void => {
     if (!game) {
       fetch(`https://api.rawg.io/api/games/${pageArgument}?key=${process.env.RAWG_KEY}`)
         .then(response => response.json())
-        .then(result => new Game(result).getScreenshots().getTrailer())
-        .then(game => displayResult(game))
+        .then((result) => displayResult(new Game(result).getTrailer().getScreenshots()))
       return;
     }
 
@@ -28,18 +27,18 @@ const PageDetail = ({ pageArgument, pageContent }: PageArgs): void => {
     // displayResults(data.results);
   }
 
-  const displayResult = (game: GameDetails): void => {
-    const articles = document.querySelector(".page-details .articles");
+  const displayResult = (game: Game): void => {
+    const container = document.querySelector(".page-details");
     console.log(game);
 
-    if (articles) articles.innerHTML = `${GameDetailsDisplay(game)}`;
+    if (container) container.innerHTML = `${GameDetailsDisplay(game)}`;
   }
 
   const render = ():void => {
     
     pageContent.innerHTML = `
     <section class="page-details">
-      <div class="articles">Hey, this is the Details Page of ${pageArgument}!</div>
+      Hey, this is the Details Page of ${pageArgument}!
     </section>
     `
     
