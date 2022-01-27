@@ -5,7 +5,8 @@
   "scripts": {
     "test": "jest --watchAll --verbose",
     "build": "webpack --watch --config webpack.config.js --env NODE_ENV=development",
-    "serve": "webpack serve --config webpack.config.js --env NODE_ENV=development"
+    "serve": "webpack serve --config webpack.config.js --env NODE_ENV=development",
+    "production-build": "webpack --watch --config webpack.config.js --env NODE_ENV=production"
   },
   "keywords": [],
   "author": "Beygs",
