@@ -9,7 +9,8 @@
 [![forthebadge](https://forthebadge.com/images/badges/makes-people-smile.svg)](https://forthebadge.com)
 
 [Pitch du projet](#pitch-du-projet) | 
-[Features](#features) | 
+[Installation](#installation) | 
+[Live Site](#live-site) | 
 [Crédits et remerciements](#crédits-et-remerciements)
 
 </div>
@@ -26,6 +27,10 @@ The Hyper Progame is the world’s premier event for computer and video games an
 4. Pour lancer le serveur local : `npm run serve`
 5. Rdv sur [localhost:8080](localhost:8080)
 6. Enjoy !
+
+## Live Site
+
+[CLLLIIIIIIIIIIIIIQUE !](https://beygs.github.io/GameVers/)
 
 ## Crédits et remerciements
 
