@@ -2,6 +2,7 @@ const DotenvWebpackPlugin = require("dotenv-webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const path = require("path");
+const { webpack } = require("webpack");
 
 module.exports = env => {
   console.log("NODE_ENV:", env.NODE_ENV);
@@ -70,6 +71,11 @@ module.exports = env => {
       new DotenvWebpackPlugin(),
       new HtmlWebpackPlugin({
         template: "/index.html"
+      }),
+      new webpack.DefinePlugin({
+        "process.env": {
+          RAWG_KEY: JSON.stringify(process.env.RAWG_KEY)
+        }
       })
     ],
   };
